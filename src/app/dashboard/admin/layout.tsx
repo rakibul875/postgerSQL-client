@@ -1,5 +1,4 @@
-
-import {  roleBaseSession } from "@/lib/api/getuser";
+import { roleBaseSession } from "@/lib/api/getuser";
 import React from "react";
 
 interface AdminLayoutProps {
@@ -9,7 +8,7 @@ interface AdminLayoutProps {
 const AdminLayout = async ({
   children,
 }: AdminLayoutProps): Promise<React.ReactNode> => {
-  await roleBaseSession("admin");
+  await roleBaseSession("Admin");
 
   return <>{children}</>;
 };

@@ -1,13 +1,29 @@
 "use server";
 import { headers } from "next/headers";
-import { auth } from "../auth";
 import { redirect } from "next/navigation";
 
 export const getUserSession = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-  return session?.user;
+  const requestHeaders = await headers();
+
+  const cookie = requestHeaders.get("cookie");
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/get-session`,
+    {
+      headers: {
+        Cookie: cookie || "",
+      },
+      cache: "no-store",
+    },
+  );
+
+  if (!response.ok) {
+    return null;
+  }
+
+  const session = await response.json();
+
+  return session?.user ?? null;
 };
 
 // export const getToken = async () => {
@@ -27,4 +43,3 @@ export const roleBaseSession = async (role: string) => {
   }
   return user;
 };
-

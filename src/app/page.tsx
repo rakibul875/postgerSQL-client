@@ -6,10 +6,10 @@ import Rhythm from "@/components/pageUi/home/Rhythm";
 export default function Home() {
   return (
     <div className="">
-      {/* <Banner />
-      <HomeCard/>
-      <Choose/>
-      <Rhythm/> */}
+      <Banner />
+      {/* <HomeCard/> */}
+      <Choose />
+      <Rhythm />
     </div>
   );
 }

@@ -1,5 +1,4 @@
-
-import {  roleBaseSession } from "@/lib/api/getuser";
+import { roleBaseSession } from "@/lib/api/getuser";
 import React from "react";
 
 interface CustomerLayoutProps {
@@ -9,7 +8,7 @@ interface CustomerLayoutProps {
 const CustomerLayout = async ({
   children,
 }: CustomerLayoutProps): Promise<React.ReactNode> => {
-  await roleBaseSession("customer");
+  await roleBaseSession("Customer");
 
   return <>{children}</>;
 };

@@ -2,8 +2,11 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import BannerImage from "@/assets/image/BannerImage.jpg";
+import { getUserSession } from "@/lib/api/getuser";
 
-const Banner: React.FC = () => {
+const Banner: React.FC = async () => {
+  const user = await getUserSession();
+  console.log("user", user);
   return (
     <section className="w-full bg-white pt-24 pb-12 md:py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">

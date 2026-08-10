@@ -1,4 +1,3 @@
-
 import { getUserSession } from "@/lib/api/getuser";
 import { authClient } from "@/lib/auth-client";
 import { Bars } from "@gravity-ui/icons";
@@ -13,7 +12,6 @@ import {
   LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { IoBagAdd } from "react-icons/io5";
 
 interface NavItem {
   icon: LucideIcon;
@@ -30,7 +28,6 @@ interface UserSession {
 
 const SideBare = async () => {
   const user = (await getUserSession()) as UserSession | null;
-  
 
   const roleNavItems: Record<string, NavItem[]> = {
     customer: [
@@ -127,7 +124,7 @@ const SideBare = async () => {
             <p className="text-sm">{user?.email || ""}</p>
           </div>
         </div>
-        {neviCationItems}    
+        {neviCationItems}
       </aside>
 
       <div className="lg:hidden shadow p-3">
