@@ -8,7 +8,7 @@ interface AdminLayoutProps {
 const AdminLayout = async ({
   children,
 }: AdminLayoutProps): Promise<React.ReactNode> => {
-  await roleBaseSession("Admin");
+  await roleBaseSession("admin");
 
   return <>{children}</>;
 };

@@ -8,7 +8,7 @@ interface CustomerLayoutProps {
 const CustomerLayout = async ({
   children,
 }: CustomerLayoutProps): Promise<React.ReactNode> => {
-  await roleBaseSession("Customer");
+  await roleBaseSession("customer");
 
   return <>{children}</>;
 };
