@@ -35,7 +35,7 @@ const FoodDetailsContent: React.FC<FoodDetailsContentProps> = ({
       userEmail: userEmail,
     };
     const res = await handleCartPost(cartData);
-    if (res.insertedId) {
+    if (res.success) {
       alert(`${foodItem.name} added to cart!`);
     }
   };
