@@ -10,7 +10,7 @@ import { ArrowRightFromSquare } from "@gravity-ui/icons";
 import { getMyCart } from "@/lib/get/my-cart";
 import { array } from "better-auth";
 interface CartItem {
-  _id: string;
+  id: string;
   name: string;
   price: string;
   image: string;
@@ -31,12 +31,14 @@ const Navbar: React.FC = () => {
     const loadCartItems = async () => {
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/my-cart?userId=${userId}`,{
-            cache:'no-store'
-          }
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/cart/${userId}`,
+          {
+            cache: "no-store",
+          },
         );
 
-        const data = await res.json();
+        const CartData = await res.json();
+        const data: CartItem[] = CartData.data || [];
         setCartItems(data);
       } catch (error) {
         console.error(error);
@@ -45,7 +47,7 @@ const Navbar: React.FC = () => {
 
     loadCartItems();
   }, [userId, isPending]);
-  
+
   if (pathname.includes("dashboard")) {
     return null;
   }

@@ -37,6 +37,8 @@ const FoodDetailsContent: React.FC<FoodDetailsContentProps> = ({
     const res = await handleCartPost(cartData);
     if (res.success) {
       alert(`${foodItem.name} added to cart!`);
+    } else {
+      alert(res.message);
     }
   };
 

@@ -52,7 +52,7 @@ const CartDetailsView: React.FC<CartDetailsViewProps> = ({
       <div className="lg:col-span-2 space-y-4">
         {initialCartItems.map((item) => (
           <div
-            key={item._id}
+            key={item.id}
             className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between gap-4 group hover:shadow-md transition-shadow"
           >
             <div className="flex items-center space-x-4 min-w-0">
@@ -78,7 +78,7 @@ const CartDetailsView: React.FC<CartDetailsViewProps> = ({
 
             <button
               className="text-gray-400 hover:text-red-600 p-2.5 rounded-xl hover:bg-red-50/50 transition-all border border-transparent hover:border-red-100/50 flex-shrink-0"
-              onClick={() => handleDelete(item._id)}
+              onClick={() => handleDelete(item.id)}
             >
               <FiTrash2 size={18} />
             </button>

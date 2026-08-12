@@ -1,10 +1,16 @@
 import CartDetailsView from "@/components/cart/CartDetailsView";
-import { auth } from "@/lib/auth";
+import { getUserSession } from "@/lib/api/getuser";
 import { getMyCart } from "@/lib/get/my-cart";
-import { headers } from "next/headers";
+import { getUser } from "@/lib/get/user";
+
+interface CartResponse {
+  success: boolean;
+  message: string;
+  data: CartItem[];
+}
 
 export interface CartItem {
-  _id: string;
+  id: string;
   name: string;
   category: string;
   price: string;
@@ -13,12 +19,14 @@ export interface CartItem {
 }
 
 const MyCart = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  const user = await getUserSession();
+  const userId = user.id;
 
-  const userId = session?.user?.id;
-  const myCartItems: CartItem[] = (await getMyCart(userId as string)) || [];
+  // const userId = session?.user?.id;
+  const myCartItems = (await getMyCart(userId as string)) as CartResponse;
+
+  const data: CartItem[] = myCartItems.data || [];
+  console.log("My Cart Items:", data);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100/40 to-gray-50 py-12 px-4 sm:px-6 lg:px-8 mt-16">
@@ -32,7 +40,7 @@ const MyCart = async () => {
           </p>
         </div>
 
-        <CartDetailsView initialCartItems={myCartItems} />
+        <CartDetailsView initialCartItems={data} />
       </div>
     </div>
   );
