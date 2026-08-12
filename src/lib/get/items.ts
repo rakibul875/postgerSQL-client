@@ -1,16 +1,18 @@
 import { handleGetSection } from "../action/serverGet";
-export const getAllItems = async (search: string = "", category: string = "All"): Promise<any> => {
+export const getAllItems = async (
+  search: string = "",
+  category: string = "All",
+): Promise<any> => {
+  const queryPath = `/products?search=${encodeURIComponent(search)}&category=${encodeURIComponent(category)}`;
 
-  const queryPath = `/items?search=${encodeURIComponent(search)}&category=${encodeURIComponent(category)}`;
-  
   return handleGetSection(queryPath);
 };
 
 export const getItemById = async (id: string): Promise<any> => {
-  const queryPath = `/items/${encodeURIComponent(id)}`;
+  const queryPath = `/products/${encodeURIComponent(id)}`;
   return handleGetSection(queryPath);
 };
 
-export const getLatestItem=async():Promise<any>=>{
-  return handleGetSection('/latest-items')
-}
+export const getLatestItem = async (): Promise<any> => {
+  return handleGetSection("/latest-products");
+};

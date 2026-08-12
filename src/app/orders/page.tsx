@@ -21,7 +21,8 @@ const OrdersPage = async ({ searchParams }: PageProps) => {
   const search = resolvedParams.search || "";
   const category = resolvedParams.category || "All";
 
-  const foodItems: FoodItem[] = await getAllItems(search, category);
+  const foodItems = await getAllItems(search, category);
+  const data: FoodItem[] = foodItems.data;
 
   return (
     <div className="min-h-screen bg-gray-50/50 py-12 mt-16">
@@ -36,7 +37,7 @@ const OrdersPage = async ({ searchParams }: PageProps) => {
         </div>
 
         <FoodItemsSection
-          initialItems={foodItems}
+          initialItems={data}
           currentSearch={search}
           currentCategory={category}
         />
