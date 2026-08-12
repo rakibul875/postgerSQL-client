@@ -27,7 +27,7 @@ const FoodDetailsContent: React.FC<FoodDetailsContentProps> = ({
 
   const handleAddToCart = async () => {
     const cartData = {
-      id: foodItem.id,
+      foodId: foodItem.id,
       name: foodItem.name,
       price: foodItem.price,
       image: foodItem.image,
