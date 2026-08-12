@@ -27,7 +27,7 @@ const FoodDetailsContent: React.FC<FoodDetailsContentProps> = ({
 
   const handleAddToCart = async () => {
     const cartData = {
-      id: foodItem._id,
+      id: foodItem.id,
       name: foodItem.name,
       price: foodItem.price,
       image: foodItem.image,
@@ -40,12 +40,10 @@ const FoodDetailsContent: React.FC<FoodDetailsContentProps> = ({
     }
   };
 
-  const itemPayload={
-    name:foodItem.name,
-    image:foodItem.image,
-    
-  }
- 
+  const itemPayload = {
+    name: foodItem.name,
+    image: foodItem.image,
+  };
 
   return (
     <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-8 p-6 sm:p-8 relative">
@@ -113,16 +111,12 @@ const FoodDetailsContent: React.FC<FoodDetailsContentProps> = ({
             </button>
 
             <form action={"/api/checkout_sessions"} method="POST">
-              <input
-                type="hidden"
-                name="price"
-                value={foodItem.price}
-              />
+              <input type="hidden" name="price" value={foodItem.price} />
               <input type="hidden" name="title" value={foodItem.name} />
-              <input type="hidden" name="productId" value={foodItem._id} />
+              <input type="hidden" name="productId" value={foodItem.id} />
               <input type="hidden" name="image" value={foodItem.image} />
-              <input type="hidden" name="status" value='pending' />
-              
+              <input type="hidden" name="status" value="pending" />
+
               <button
                 type="submit"
                 className="w-full bg-[#EA580C] hover:bg-[#c2410c] text-white font-bold text-sm py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 shadow-md shadow-orange-500/10 active:scale-98"

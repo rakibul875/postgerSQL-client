@@ -11,7 +11,7 @@ interface FoodsDetailsProps {
 }
 
 export interface FoodItem {
-  _id: string;
+  id: string;
   name: string;
   category: string;
   price: string;
@@ -22,7 +22,8 @@ export interface FoodItem {
 
 const FoodsDetails = async ({ params }: FoodsDetailsProps) => {
   const { id } = await params;
-  const foodItem: FoodItem = await getItemById(id);
+  const foodItem = await getItemById(id);
+  const data: FoodItem = foodItem.data;
 
   if (!foodItem) {
     return (
@@ -49,7 +50,7 @@ const FoodsDetails = async ({ params }: FoodsDetailsProps) => {
           Back to Menu
         </Link>
 
-        <FoodDetailsContent foodItem={foodItem} />
+        <FoodDetailsContent foodItem={data} />
       </div>
     </div>
   );

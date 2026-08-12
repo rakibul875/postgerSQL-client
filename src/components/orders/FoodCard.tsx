@@ -40,7 +40,7 @@ const FoodCard: React.FC<FoodCardProps> = ({ item }) => {
           </p>
         </div>
 
-        <Link href={`/orders/${item._id}`}>
+        <Link href={`/orders/${item.id}`}>
           <button className="w-full bg-gray-50 hover:bg-[#EA580C] text-gray-700 hover:text-white font-bold text-xs py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 border border-gray-100 hover:border-[#EA580C]">
             <FiShoppingCart size={14} />
             <span>Add to Cart</span>

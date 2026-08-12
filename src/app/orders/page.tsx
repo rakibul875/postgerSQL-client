@@ -3,7 +3,7 @@ import { getAllItems } from "@/lib/get/items";
 import React from "react";
 
 export interface FoodItem {
-  _id: string;
+  id: string;
   name: string;
   category: string;
   price: string;
