@@ -14,5 +14,5 @@ export const getItemById = async (id: string): Promise<any> => {
 };
 
 export const getLatestItem = async (): Promise<any> => {
-  return handleGetSection("/latest-products");
+  return handleGetSection("/products/latest");
 };
