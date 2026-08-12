@@ -1,6 +1,6 @@
 "use client";
 
-import { handleItemPost } from "@/lib/post/items";
+import { handleProductPost } from "@/lib/post/items";
 import React, { useState, useRef } from "react";
 import { FiPlusCircle, FiImage, FiLoader, FiTrash2 } from "react-icons/fi";
 
@@ -20,7 +20,7 @@ const AddItemsForm: React.FC = () => {
   const [formData, setFormData] = useState<FoodItemFormData>({
     name: "",
     category: "Appetizer",
-    price: '',
+    price: "",
     description: "",
     image: "",
   });
@@ -91,16 +91,17 @@ const AddItemsForm: React.FC = () => {
     }
 
     setIsSubmitting(true);
-    try {     
+    try {
       setFormData({
         name: "",
         category: "Appetizer",
-        price: '',
+        price: "",
         description: "",
         image: "",
       });
-      const res = await handleItemPost(formData);
-      if (res.insertedId) {
+      const res = await handleProductPost(formData);
+      console.log("Server Response:", res);
+      if (res.success) {
         alert("Food item added successfully!");
       }
 
