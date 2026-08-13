@@ -63,13 +63,19 @@ export default async function Success({ searchParams }: SuccessPageProps) {
     };
 
     await postSubscription(subscriptionData);
-    await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/my-cart/user/${metadata?.userId}`,
-      {
-        method: "DELETE",
-      },
-    );
-    // await postOrder(orderData);
+    // await fetch(
+    //   `${process.env.NEXT_PUBLIC_BACKEND_URL}/my-cart/user/${metadata?.userId}`,
+    //   {
+    //     method: "DELETE",
+    //   },
+    // );
+    const res = await postOrder(orderData);
+    if (res?.status === true) {
+      alert("Order has been placed successfully!");
+    }
+    if (res?.status === false) {
+      alert("Failed to place the order. Please try again.");
+    }
 
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100/40 to-gray-50 flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 mt-12">

@@ -25,7 +25,7 @@ const OrderListContainer: React.FC<OrderListContainerProps> = ({
   const router = useRouter();
   const handleDelete = async (id: any) => {
     const res = await dataDelete(`/my-order/${id}`);
-    if (res.deletedCount > 0) {
+    if (res.success) {
       alert("Item delete Successful");
       router.refresh();
     }
@@ -102,7 +102,7 @@ const OrderListContainer: React.FC<OrderListContainerProps> = ({
 
         return (
           <div
-            key={order._id}
+            key={order.id}
             className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row md:items-center justify-between gap-5"
           >
             <div className="flex items-center space-x-4 min-w-0">
@@ -136,7 +136,7 @@ const OrderListContainer: React.FC<OrderListContainerProps> = ({
 
               {order.status === "pending" && (
                 <button
-                  onClick={() => handleDelete(order._id)}
+                  onClick={() => handleDelete(order.id)}
                   className="text-xs font-bold text-red-600 bg-red-50 hover:bg-red-100/70 border border-red-100 px-4 py-2 rounded-xl transition-all active:scale-95"
                 >
                   Cancel Order

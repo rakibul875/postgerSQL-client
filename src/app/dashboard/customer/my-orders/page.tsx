@@ -1,11 +1,11 @@
 import OrderListContainer from "@/components/dashboard/customer/OrderListContainer";
-import { auth } from "@/lib/auth";
+import { getUserSession } from "@/lib/api/getuser";
 import { getOrder } from "@/lib/get/order";
 import { headers } from "next/headers";
 import React from "react";
 
 export interface OrderItem {
-  _id: string;
+  id: string;
   productImage: string;
   userId: string;
   sessionId: string;
@@ -16,17 +16,15 @@ export interface OrderItem {
 }
 
 const MyOrderPage = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  const user = await getUserSession();
 
-  const userId = session?.user?.id;
-  const orderItems: OrderItem[] = await getOrder(userId || "");
+  const userId = user?.id;
+  const orderItems = await getOrder(userId || "");
+  const data: OrderItem[] = orderItems?.data || [];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100/40 to-gray-50 py-12 px-4 sm:px-6 lg:px-8 mt-16">
       <div className="max-w-5xl mx-auto space-y-6">
-  
         <div className="border-b border-gray-100 pb-5">
           <h1 className="text-2xl sm:text-3xl font-black text-gray-950 tracking-tight">
             My Orders
@@ -36,7 +34,7 @@ const MyOrderPage = async () => {
           </p>
         </div>
 
-        <OrderListContainer initialOrders={orderItems} />
+        <OrderListContainer initialOrders={data} />
       </div>
     </div>
   );
