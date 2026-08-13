@@ -3,14 +3,15 @@ import React from "react";
 import { FiUsers, FiSliders } from "react-icons/fi";
 
 interface UserData {
-  _id: string;
+  id: string;
   name: string;
   email: string;
   role: string;
 }
 
 const User = async () => {
-  const users: UserData[] = (await getUser()) || [];
+  const data = await getUser();
+  const users: UserData[] = data?.data || [];
   const totalUsers = users.length;
 
   return (
