@@ -69,7 +69,7 @@ export default async function Success({ searchParams }: SuccessPageProps) {
         method: "DELETE",
       },
     );
-    await postOrder(orderData);
+    // await postOrder(orderData);
 
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100/40 to-gray-50 flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 mt-12">
