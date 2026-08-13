@@ -29,7 +29,7 @@ const AdminOrderList: React.FC<AdminOrderListProps> = ({ initialOrders }) => {
 
     if (res.modifiedCount > 0) {
       alert(`Order ${nextStatus} successful`);
-      router.refresh()
+      router.refresh();
     }
   };
 
@@ -81,7 +81,7 @@ const AdminOrderList: React.FC<AdminOrderListProps> = ({ initialOrders }) => {
 
         return (
           <div
-            key={order._id}
+            key={order.id}
             className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-5 transition-all hover:shadow-md"
           >
             <div className="flex items-center space-x-4 min-w-0">
@@ -121,7 +121,7 @@ const AdminOrderList: React.FC<AdminOrderListProps> = ({ initialOrders }) => {
             <div className="flex items-center justify-between md:justify-end gap-3 border-t md:border-t-0 pt-3 md:pt-0 border-gray-50">
               {order.status === "pending" && (
                 <button
-                  onClick={() => handleUpdateStatus(order._id, "accepted")}
+                  onClick={() => handleUpdateStatus(order.id, "accepted")}
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 bg-blue-50 hover:bg-blue-100/80 border border-blue-100 px-4 py-2.5 rounded-xl transition-all active:scale-95"
                 >
                   <FiCheck size={14} />
@@ -131,7 +131,7 @@ const AdminOrderList: React.FC<AdminOrderListProps> = ({ initialOrders }) => {
 
               {order.status === "accepted" && (
                 <button
-                  onClick={() => handleUpdateStatus(order._id, "confirmed")}
+                  onClick={() => handleUpdateStatus(order.id, "confirmed")}
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-100 px-4 py-2.5 rounded-xl transition-all active:scale-95 animate-pulse"
                 >
                   <FiPackage size={14} />
