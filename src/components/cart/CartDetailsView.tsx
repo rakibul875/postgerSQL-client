@@ -17,9 +17,11 @@ const CartDetailsView: React.FC<CartDetailsViewProps> = ({
   const router = useRouter();
   const handleDelete = async (id: any) => {
     const res = await dataDelete(`/my-cart/${id}`);
-    if (res.deletedCount > 0) {
+    if (res.success === true) {
       alert("Item delete Successful");
       router.refresh();
+    } else {
+      alert(res.message);
     }
   };
   const subtotal = initialCartItems.reduce(
