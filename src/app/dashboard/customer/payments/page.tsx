@@ -1,4 +1,4 @@
-import { auth } from "@/lib/auth";
+import { getUserSession } from "@/lib/api/getuser";
 import { getPayment } from "@/lib/get/my-payment";
 import { headers } from "next/headers";
 import React from "react";
@@ -11,7 +11,7 @@ import {
 } from "react-icons/fi";
 
 interface PaymentItem {
-  _id: string;
+  id: string;
   sessionId: string;
   userName: string;
   amount: number;
@@ -21,13 +21,12 @@ interface PaymentItem {
 }
 
 const PaymentPage = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  const user = await getUserSession();
 
-  const userId = session?.user?.id;
+  const userId = user?.id;
 
-  const payments: PaymentItem[] = (await getPayment(userId)) || [];
+  const data = await getPayment(userId);
+  const payments: PaymentItem[] = data?.data || [];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100/40 to-gray-50 py-12 px-4 sm:px-6 lg:px-8 mt-16">
@@ -68,7 +67,7 @@ const PaymentPage = async () => {
 
                     return (
                       <tr
-                        key={payment._id}
+                        key={payment.id}
                         className="hover:bg-gray-50/50 transition-colors"
                       >
                         <td
@@ -119,7 +118,7 @@ const PaymentPage = async () => {
 
                 return (
                   <div
-                    key={payment._id}
+                    key={payment.id}
                     className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-4"
                   >
                     <div className="flex justify-between items-start gap-2">

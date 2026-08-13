@@ -1,5 +1,5 @@
-import { handleGetSection } from "../action/serverGet"
+import { handleGetSection } from "../action/serverGet";
 
-export const getPayment=(userId:any):Promise<any>=>{
- return handleGetSection(`/my-payment?userId=${userId}`)
-}
+export const getPayment = (userId: any): Promise<any> => {
+  return handleGetSection(`/my-payment/${userId}`);
+};
