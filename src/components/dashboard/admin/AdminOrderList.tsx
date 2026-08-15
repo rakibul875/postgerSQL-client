@@ -5,13 +5,7 @@ import { updateOrder } from "@/lib/post/order";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-import {
-  FiClock,
-  FiCheck,
-  FiPackage,
-  FiBox,
-  FiCheckCircle,
-} from "react-icons/fi";
+import { FiCheck, FiPackage, FiBox, FiCheckCircle } from "react-icons/fi";
 
 interface AdminOrderListProps {
   initialOrders: AdminOrderItem[];
