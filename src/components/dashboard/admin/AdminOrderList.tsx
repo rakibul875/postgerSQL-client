@@ -62,6 +62,9 @@ const AdminOrderList: React.FC<AdminOrderListProps> = ({ initialOrders }) => {
   return (
     <div className="space-y-4">
       {orders.map((order) => {
+        if (order.status === "confirmed") {
+          return;
+        }
         const formattedDate = new Date(order.orderAt).toLocaleDateString(
           "en-US",
           {
@@ -72,7 +75,6 @@ const AdminOrderList: React.FC<AdminOrderListProps> = ({ initialOrders }) => {
             minute: "2-digit",
           },
         );
-
         return (
           <div
             key={order.id}
@@ -131,13 +133,6 @@ const AdminOrderList: React.FC<AdminOrderListProps> = ({ initialOrders }) => {
                   <FiPackage size={14} />
                   <span>Confirm Delivery</span>
                 </button>
-              )}
-
-              {order.status === "confirmed" && (
-                <div className="inline-flex items-center gap-1.5 text-xs font-bold text-gray-400 bg-gray-50 border border-gray-100 px-4 py-2.5 rounded-xl cursor-not-allowed">
-                  <FiCheckCircle size={14} className="text-emerald-500" />
-                  <span>Order Completed</span>
-                </div>
               )}
             </div>
           </div>
