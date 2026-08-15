@@ -1,5 +1,4 @@
 import { getAllPayments } from "@/lib/get/payment";
-import React from "react";
 import {
   FiDollarSign,
   FiActivity,
@@ -9,9 +8,8 @@ import {
   FiLayers,
 } from "react-icons/fi";
 
-
 interface PaymentItem {
-  _id: string;
+  id: string;
   sessionId: string;
   userName: string;
   amount: number;
@@ -21,9 +19,9 @@ interface PaymentItem {
 }
 
 const PaymentPage = async () => {
-  const paymentsData: PaymentItem[] = (await getAllPayments()) || [];
+  const data = await getAllPayments();
+  const paymentsData: PaymentItem[] = data?.data || [];
 
-  
   const totalRevenue = paymentsData.reduce(
     (acc, curr) => acc + (curr.amount || 0),
     0,
@@ -33,7 +31,6 @@ const PaymentPage = async () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100/40 to-gray-50 py-12 px-4 sm:px-6 lg:px-8 mt-16">
       <div className="max-w-7xl mx-auto space-y-8">
- 
         <div className="border-b border-gray-100 pb-5">
           <h1 className="text-2xl sm:text-3xl font-black text-gray-950 tracking-tight">
             All Payments Ledger
@@ -88,10 +85,8 @@ const PaymentPage = async () => {
           </div>
         </div>
 
-        
         {paymentsData.length > 0 ? (
           <>
-           
             <div className="hidden md:block bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
               <table className="w-full text-left border-collapse">
                 <thead>
@@ -116,10 +111,9 @@ const PaymentPage = async () => {
 
                     return (
                       <tr
-                        key={payment._id}
+                        key={payment.id}
                         className="hover:bg-gray-50/40 transition-colors"
                       >
-                      
                         <td className="py-4 px-6">
                           <div className="space-y-0.5">
                             <p className="text-gray-900 font-extrabold">
@@ -130,18 +124,18 @@ const PaymentPage = async () => {
                             </p>
                           </div>
                         </td>
-                        
+
                         <td
                           className="py-4 px-6 font-mono text-xs text-gray-400 max-w-[220px] truncate"
                           title={payment.sessionId}
                         >
                           {payment.sessionId}
                         </td>
-                        
+
                         <td className="py-4 px-6 text-xs text-gray-500">
                           {formattedDate}
                         </td>
-                       
+
                         <td className="py-4 px-6 text-right">
                           <span className="font-black text-[#EA580C] bg-orange-50 px-3 py-1.5 rounded-xl border border-orange-100/50">
                             ${(payment.amount || 0).toFixed(2)}
@@ -154,7 +148,6 @@ const PaymentPage = async () => {
               </table>
             </div>
 
-        
             <div className="block md:hidden space-y-4">
               {paymentsData.map((payment) => {
                 const formattedDate = new Date(
@@ -169,7 +162,7 @@ const PaymentPage = async () => {
 
                 return (
                   <div
-                    key={payment._id}
+                    key={payment.id}
                     className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-4"
                   >
                     <div className="flex justify-between items-start gap-2">
@@ -211,7 +204,6 @@ const PaymentPage = async () => {
             </div>
           </>
         ) : (
-          
           <div className="text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-sm space-y-4 max-w-md mx-auto">
             <div className="flex justify-center text-gray-300">
               <FiDollarSign size={56} className="stroke-[1.5]" />
