@@ -27,7 +27,7 @@ const AdminOrderList: React.FC<AdminOrderListProps> = ({ initialOrders }) => {
   ) => {
     const res = await updateOrder(orderId, nextStatus);
 
-    if (res.modifiedCount > 0) {
+    if (res.success === true) {
       alert(`Order ${nextStatus} successful`);
       router.refresh();
     }
