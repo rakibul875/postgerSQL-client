@@ -24,6 +24,7 @@ const Navbar: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
+  console.log(user)
   const userId = user?.id;
   useEffect(() => {
     if (isPending || !userId) return;
@@ -134,7 +135,7 @@ const Navbar: React.FC = () => {
                           className="hover:bg-gray-50 rounded-lg"
                         >
                           <Link
-                            href={`/dashboard/${user.role}`}
+                            href={`/dashboard/${(user as any).role}`}
                             className="block w-full text-sm text-gray-700 py-1.5"
                           >
                             Dashboard
