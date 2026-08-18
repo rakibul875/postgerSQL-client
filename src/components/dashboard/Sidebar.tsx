@@ -28,6 +28,7 @@ interface UserSession {
 
 const SideBare = async () => {
   const user = (await getUserSession()) as UserSession | null;
+  console.log(user);
   const roleNavItems: Record<string, NavItem[]> = {
     customer: [
       {

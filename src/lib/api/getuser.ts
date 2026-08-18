@@ -1,45 +1,51 @@
 "use server";
-import { headers } from "next/headers";
+
+import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 export const getUserSession = async () => {
-  const requestHeaders = await headers();
+  const cookieStore = await cookies();
+  const incomingHeaders = await headers();
+  
+  const cookieHeader = cookieStore.toString();
 
-  const cookie = requestHeaders.get("cookie");
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/get-session`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: cookieHeader,
+          
+          "x-forwarded-proto": incomingHeaders.get("x-forwarded-proto") || "https",
+          origin: incomingHeaders.get("origin") || process.env.CLIENT_URL || "https://restauranthub-lovat.vercel.app",
+        },
+        credentials: "include",
+        cache: "no-store",
+      }
+    );
 
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/get-session`,
-    {
-      headers: {
-        Cookie: cookie || "",
-      },
-      cache: "no-store",
-    },
-  );
+    if (!response.ok) return null;
 
-  if (!response.ok) {
+    const session = await response.json();
+    return session?.user ?? null;
+  } catch (error) {
+    console.error("Session error:", error);
     return null;
   }
-
-  const session = await response.json();
-
-  return session?.user ?? null;
 };
-
-// export const getToken = async () => {
-//   const session = await auth.api.getSession({
-//     headers: await headers(),
-//   });
-//   return session?.session?.token || null;
-// };
 
 export const roleBaseSession = async (role: string) => {
   const user = await getUserSession();
+
   if (!user) {
     redirect("/auth/signin");
   }
+
   if (user?.role !== role) {
     redirect("/unauthorize");
   }
+
   return user;
 };

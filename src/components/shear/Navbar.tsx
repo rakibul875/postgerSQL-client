@@ -24,7 +24,6 @@ const Navbar: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
-  console.log(user)
   const userId = user?.id;
   useEffect(() => {
     if (isPending || !userId) return;
