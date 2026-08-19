@@ -1,7 +1,7 @@
 import OrderChart from '@/components/dashboard/customer/OrderChart';
 import OverviewStats from '@/components/dashboard/customer/OverviewStats';
 import RecentActivity from '@/components/dashboard/customer/RecentActivity';
-import React from 'react';
+
 
 
 const Customer = () => {
