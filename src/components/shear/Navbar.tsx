@@ -7,8 +7,6 @@ import { FiShoppingCart, FiMenu, FiX } from "react-icons/fi";
 import { authClient } from "@/lib/auth-client";
 import { Avatar, Button, Dropdown } from "@heroui/react";
 import { ArrowRightFromSquare } from "@gravity-ui/icons";
-import { getMyCart } from "@/lib/get/my-cart";
-import { array } from "better-auth";
 interface CartItem {
   id: string;
   name: string;
@@ -23,7 +21,9 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const { data: session, isPending } = authClient.useSession();
+  console.log(session)
   const user = session?.user;
+  console.log(user)
   const userId = user?.id;
   useEffect(() => {
     if (isPending || !userId) return;
