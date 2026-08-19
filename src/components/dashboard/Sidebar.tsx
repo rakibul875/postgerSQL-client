@@ -115,7 +115,7 @@ const SideBare = async () => {
                 src={user?.image || ""}
               />
               <Avatar.Fallback delayMs={600}>
-                {user?.name.charAt(0)}
+                {user?.name?.charAt(0)}
               </Avatar.Fallback>
             </Avatar>
           </div>

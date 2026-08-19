@@ -2,6 +2,7 @@ import OrderListContainer from "@/components/dashboard/customer/OrderListContain
 import { getUserSession } from "@/lib/api/getuser";
 import { getOrder } from "@/lib/get/order";
 import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 import React from "react";
 
 export interface OrderItem {
@@ -18,8 +19,12 @@ export interface OrderItem {
 const MyOrderPage = async () => {
   const user = await getUserSession();
 
-  const userId = user?.id;
-  const orderItems = await getOrder(userId || "");
+  if (!user) {
+    redirect("/auth/signin");
+  }
+
+  const userId = user.id;
+  const orderItems = await getOrder(userId);
   const data: OrderItem[] = orderItems?.data || [];
 
   return (

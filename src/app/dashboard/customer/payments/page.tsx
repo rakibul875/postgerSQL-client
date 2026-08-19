@@ -1,6 +1,7 @@
 import { getUserSession } from "@/lib/api/getuser";
 import { getPayment } from "@/lib/get/my-payment";
 import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 import React from "react";
 import {
   FiCreditCard,
@@ -23,7 +24,11 @@ interface PaymentItem {
 const PaymentPage = async () => {
   const user = await getUserSession();
 
-  const userId = user?.id;
+  if (!user) {
+    redirect("/auth/signin");
+  }
+
+  const userId = user.id;
 
   const data = await getPayment(userId);
   const payments: PaymentItem[] = data?.data || [];

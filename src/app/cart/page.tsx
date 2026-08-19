@@ -2,6 +2,7 @@ import CartDetailsView from "@/components/cart/CartDetailsView";
 import { getUserSession } from "@/lib/api/getuser";
 import { getMyCart } from "@/lib/get/my-cart";
 import { getUser } from "@/lib/get/user";
+import { redirect } from "next/navigation";
 
 interface CartResponse {
   success: boolean;
@@ -20,6 +21,11 @@ export interface CartItem {
 
 const MyCart = async () => {
   const user = await getUserSession();
+  
+  if (!user) {
+    redirect("/auth/signin");
+  }
+
   const userId = user.id;
 
   // const userId = session?.user?.id;
