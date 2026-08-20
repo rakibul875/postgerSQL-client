@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RestaurantHub – Modern Restaurant Management & Food Ordering System
 
-## Getting Started
+RestaurantHub is a modern, secure, and feature-rich restaurant management and food ordering platform built with Next.js and the MERN stack. It streamlines the entire ordering process by connecting Customers and Administrators through a powerful role-based authentication system. The platform enables secure food ordering, online payments, cart management, and comprehensive restaurant administration—all within an intuitive and responsive interface.
 
-First, run the development server:
+## 🚀 Live Demo & Links
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- 🌐 **Live Application:** *(Add your deployed link here)*
+- 📂 **Client Repository:** [https://github.com/rakibul875/restauranthub-client](https://github.com/rakibul875/restauranthub-client)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+*(Note: If you have a separate backend repository or server URL, you can add them here as well)*
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🔐 Authentication & Security
+- Secure Role-Based Authentication for Admin and Customer.
+- Authentication powered by BetterAuth.
+- Protected Dashboard Routes.
+- Secure Middleware & Authorization.
+- Environment Variable Protection.
 
-## Learn More
+### 👤 Customer Dashboard
+- Browse available menu items and special offers.
+- Dynamic shopping cart management.
+- Secure checkout and online payment with Stripe.
+- View order history and track order status.
+- Access payment history.
+- Manage personal profile.
+- Access dedicated customer support.
 
-To learn more about Next.js, take a look at the following resources:
+### 👨‍💼 Admin Dashboard
+- Manage menu items, categories, and special offers.
+- View and manage incoming customer orders.
+- Monitor overall platform activities and sales.
+- Access administrative dashboard analytics (powered by Recharts).
+- Manage user roles and accounts.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 💳 Payment System
+- Secure payment integration using Stripe.
+- Instant order confirmation after successful payment.
+- Complete payment history for customers and administrators.
+- Secure checkout experience.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🛒 Cart & Order Management
+- Dynamic shopping cart system.
+- Real-time order calculation.
+- Seamless transition from cart to checkout.
 
-## Deploy on Vercel
+## 🛠️ Tech Stack & Architecture
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🎨 Frontend (Client-Side)
+- **Framework:** Next.js 16 (App Router)
+- **Library:** React 19
+- **Styling:** Tailwind CSS v4
+- **UI Components:** HeroUI & DaisyUI
+- **Authentication:** BetterAuth
+- **Charts:** Recharts
+- **Icons:** React Icons, Lucide React, & Gravity UI Icons
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### ⚙️ Backend (Server-Side)
+- **Runtime:** Node.js
+- **Framework:** Next.js API Routes
+- **Database:** MongoDB Atlas (with Prisma & Mongo Adapters)
+- **Authentication:** BetterAuth
+- **Payment Gateway:** Stripe
+- **Security:** Protected API Routes & Middleware
+
+## 📈 Core Functionalities
+- Role-Based Authentication (Admin vs Customer)
+- Interactive Food Menu & Offers
+- Cart & Checkout System
+- Stripe Payment Integration
+- Order History Tracking
+- Dashboard Analytics with Charts
+- Responsive Dashboard Interface
+- Secure Protected APIs
+
+## 📱 Responsive Design
+- Fully Responsive Layout
+- Mobile Friendly
+- Tablet Optimized
+- Desktop Optimized
+- Modern UI/UX Design
+
+## 🚀 Future Improvements
+- Table Reservation System
+- Real-time Order Tracking Map
+- Email & SMS Order Notifications
+- Multi-language Support
+- Review and Rating for Food Items
+
+## 👨‍💻 Developed By
+**Rakibul Islam Ashik**
+- GitHub: [https://github.com/rakibul875](https://github.com/rakibul875)
+
+## ⭐ Support
+If you like this project, don't forget to ⭐ Star the repository and share your feedback!
