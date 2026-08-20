@@ -4,7 +4,7 @@ RestaurantHub is a modern, secure, and feature-rich restaurant management and fo
 
 ## 🚀 Live Demo & Links
 
-- 🌐 **Live Application:** [\*(Add your deployed link here)](https://restauranthub-lovat.vercel.app/)\*
+- 🌐 **Live Application:** [\*(Live site link)](https://restauranthub-lovat.vercel.app/)\*
 - 📂 **Client Repository:** [https://github.com/rakibul875/restauranthub-client](https://github.com/rakibul875/restauranthub-client)
 
 ## ✨ Features
