@@ -1,6 +1,7 @@
 import FoodItemsSection from "@/components/orders/FoodItemsSection";
 import { getAllItems } from "@/lib/get/items";
 import React from "react";
+import SectionMotion from "@/components/pageUi/home/SectionMotion";
 
 export interface FoodItem {
   id: string;
@@ -27,20 +28,24 @@ const OrdersPage = async ({ searchParams }: PageProps) => {
   return (
     <div className="min-h-screen bg-gray-50/50 py-12 mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 text-center sm:text-left">
-          <h1 className="text-3xl font-black text-gray-950 tracking-tight">
-            Our Delicious Menu
-          </h1>
-          <p className="text-xs text-gray-400 mt-1 font-medium">
-            Explore our wide range of freshly prepared foods just for you.
-          </p>
-        </div>
+        <SectionMotion delay={0.1}>
+          <div className="mb-10 text-center sm:text-left">
+            <h1 className="text-3xl font-black text-gray-950 tracking-tight">
+              Our Delicious Menu
+            </h1>
+            <p className="text-xs text-gray-400 mt-1 font-medium">
+              Explore our wide range of freshly prepared foods just for you.
+            </p>
+          </div>
+        </SectionMotion>
 
-        <FoodItemsSection
-          initialItems={data}
-          currentSearch={search}
-          currentCategory={category}
-        />
+        <SectionMotion delay={0.2}>
+          <FoodItemsSection
+            initialItems={data}
+            currentSearch={search}
+            currentCategory={category}
+          />
+        </SectionMotion>
       </div>
     </div>
   );
