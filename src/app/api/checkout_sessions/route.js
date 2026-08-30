@@ -9,16 +9,12 @@ export async function POST(request) {
     const headersList = await headers();
     const origin = headersList.get("origin");
     const user = await getUserSession();
-  
-
     const formData = await request.formData();
     const price = formData.get("price");
     const title = formData.get("title");
     const productId = formData.get("productId");
     const productImage = formData.get("image");
     const status = formData.get("status");
-
-   .
     const session = await stripe.checkout.sessions.create({
       customer_email: user?.email,
       line_items: [
