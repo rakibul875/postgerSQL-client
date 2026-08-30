@@ -9,7 +9,7 @@ export async function POST(request) {
     const headersList = await headers();
     const origin = headersList.get("origin");
     const user = await getUserSession();
-    // const user=users?.user
+  
 
     const formData = await request.formData();
     const price = formData.get("price");
@@ -18,12 +18,12 @@ export async function POST(request) {
     const productImage = formData.get("image");
     const status = formData.get("status");
 
-    // Create Checkout Sessions from body params.
+   .
     const session = await stripe.checkout.sessions.create({
       customer_email: user?.email,
       line_items: [
         {
-          // Provide the exact Price ID (for example, price_1234) of the product you want to sell
+         
           price_data: {
             currency: "usd",
             unit_amount: Number(price) * 100,
