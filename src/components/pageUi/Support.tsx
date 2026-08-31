@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import {
   FiMail,
   FiPhone,
@@ -61,7 +62,12 @@ const Support: React.FC = () => {
   return (
     <section className="w-full bg-gray-50 min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto space-y-16">
-        <div className="text-center max-w-2xl mx-auto space-y-3">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-2xl mx-auto space-y-3"
+        >
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight">
             Customer <span className="text-[#A64B16]">Support</span>
           </h1>
@@ -69,10 +75,15 @@ const Support: React.FC = () => {
             Have a question or facing an issue with your order? We are here to
             help you 24/7.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-          <div className="space-y-4 lg:col-span-1">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="space-y-4 lg:col-span-1"
+          >
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-start space-x-4">
               <div className="p-3 bg-orange-50 rounded-xl text-[#A64B16]">
                 <FiPhone size={20} />
@@ -112,9 +123,14 @@ const Support: React.FC = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100 lg:col-span-2">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100 lg:col-span-2"
+          >
             <h2 className="text-xl font-bold text-gray-900 mb-6">
               Send Us a Message
             </h2>
@@ -173,16 +189,24 @@ const Support: React.FC = () => {
                 Submit Message
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="max-w-3xl mx-auto space-y-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="max-w-3xl mx-auto space-y-6"
+        >
           <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
             Frequently Asked Questions
           </h2>
           <div className="space-y-3">
-            {faqs.map((faq) => (
-              <div
+            {faqs.map((faq, index) => (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
                 key={faq.id}
                 className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden"
               >
@@ -204,10 +228,10 @@ const Support: React.FC = () => {
                     {faq.answer}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
