@@ -63,12 +63,7 @@ export default async function Success({ searchParams }: SuccessPageProps) {
     };
 
     await postSubscription(subscriptionData);
-    // await fetch(
-    //   `${process.env.NEXT_PUBLIC_BACKEND_URL}/my-cart/user/${metadata?.userId}`,
-    //   {
-    //     method: "DELETE",
-    //   },
-    // );
+
     const res = await postOrder(orderData);
     if (res?.status === true) {
       alert("Order has been placed successfully!");
