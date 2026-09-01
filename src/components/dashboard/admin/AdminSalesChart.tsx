@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import {
   AreaChart,
@@ -10,8 +9,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-
-
 const salesData = [
   { name: "Jan", sales: 2400 },
   { name: "Feb", sales: 1398 },
@@ -31,9 +28,7 @@ const AdminSalesChart = () => {
         <p className="text-xs text-gray-400 font-medium">
           Graphical progression chart of company transactions and cash flow.
         </p>
-      </div>
-
-   
+      </div> 
       <div className="w-full h-80 pt-4">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
