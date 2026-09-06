@@ -4,6 +4,7 @@ import { OrderItem } from "@/app/dashboard/customer/my-orders/page";
 import { dataDelete } from "@/lib/action/serverPost";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 import {
   FiClock,
@@ -26,7 +27,7 @@ const OrderListContainer: React.FC<OrderListContainerProps> = ({
   const handleDelete = async (id: any) => {
     const res = await dataDelete(`/my-order/${id}`);
     if (res.success) {
-      alert("Item delete Successful");
+      toast.success("Item delete Successful");
       router.refresh();
     }
   };

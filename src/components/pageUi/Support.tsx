@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import {
   FiMail,
@@ -52,7 +53,7 @@ const Support: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert(
+    toast.success(
       `Thank you ${formData.name}! Your message has been sent successfully.`,
     );
     setFormData({ name: "", email: "", message: "" });

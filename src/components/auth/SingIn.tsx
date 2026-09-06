@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FiEye, FiEyeOff, FiLogIn } from "react-icons/fi";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const SingIn: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -20,10 +21,10 @@ const SingIn: React.FC = () => {
       password: password,
     });
     if (data) {
-      alert(`Logging in with: ${email}`);
+      toast.success(`Logging in with: ${email}`);
       router.push('/')
     } else {
-      alert(error.message);
+      toast.error(error.message);
     }
   };
 

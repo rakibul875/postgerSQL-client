@@ -2,6 +2,7 @@
 
 import { handleProductPost } from "@/lib/post/items";
 import React, { useState, useRef } from "react";
+import toast from "react-hot-toast";
 import { FiPlusCircle, FiImage, FiLoader, FiTrash2 } from "react-icons/fi";
 
 const IMGBB_API_KEY = process.env.NEXT_PUBLIC_IMGBB_API_KEY;
@@ -43,7 +44,7 @@ const AddItemsForm: React.FC = () => {
 
     if (!IMGBB_API_KEY) {
       console.error("ImgBB API Key is missing! Check your .env.local file.");
-      alert("Configuration Error: API Key not found. Please check console.");
+      toast.error("Configuration Error: API Key not found. Please check console.");
       return;
     }
 
@@ -68,11 +69,11 @@ const AddItemsForm: React.FC = () => {
         console.log("Uploaded Image URL:", result.data.url);
       } else {
         console.error("ImgBB Error Response:", result);
-        alert(`Upload Failed: ${result.error?.message || "Unknown error"}`);
+        toast.error(`Upload Failed: ${result.error?.message || "Unknown error"}`);
       }
     } catch (error) {
       console.error("Network Error during ImgBB upload:", error);
-      alert("Network Error: Could not connect to ImgBB.");
+      toast.error("Network Error: Could not connect to ImgBB.");
     } finally {
       setIsUploading(false);
     }
@@ -86,7 +87,7 @@ const AddItemsForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.image) {
-      alert("Please upload a food image first!");
+      toast.error("Please upload a food image first!");
       return;
     }
 
@@ -102,7 +103,7 @@ const AddItemsForm: React.FC = () => {
       const res = await handleProductPost(formData);
       console.log("Server Response:", res);
       if (res.success) {
-        alert("Food item added successfully!");
+        toast.success("Food item added successfully!");
       }
 
       if (fileInputRef.current) fileInputRef.current.value = "";

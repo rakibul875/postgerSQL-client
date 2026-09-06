@@ -4,6 +4,7 @@ import { AdminOrderItem } from "@/app/dashboard/admin/orders/page";
 import { updateOrder } from "@/lib/post/order";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 import { FiCheck, FiPackage, FiBox, FiCheckCircle } from "react-icons/fi";
 
@@ -22,7 +23,7 @@ const AdminOrderList: React.FC<AdminOrderListProps> = ({ initialOrders }) => {
     const res = await updateOrder(orderId, nextStatus);
 
     if (res.success === true) {
-      alert(`Order ${nextStatus} successful`);
+      toast.success(`Order ${nextStatus} successful`);
       router.refresh();
     }
   };

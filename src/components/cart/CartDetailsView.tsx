@@ -4,6 +4,7 @@ import { CartItem } from "@/app/cart/page";
 import { dataDelete } from "@/lib/action/serverPost";
 import { useRouter } from "next/navigation";
 import React from "react";
+import toast from "react-hot-toast";
 
 import { FiTrash2, FiShoppingBag, FiCreditCard } from "react-icons/fi";
 
@@ -18,10 +19,10 @@ const CartDetailsView: React.FC<CartDetailsViewProps> = ({
   const handleDelete = async (id: any) => {
     const res = await dataDelete(`/my-cart/${id}`);
     if (res.success === true) {
-      alert("Item delete Successful");
+      toast.success("Item delete Successful");
       router.refresh();
     } else {
-      alert(res.message);
+      toast.error(res.message);
     }
   };
   const subtotal = initialCartItems.reduce(

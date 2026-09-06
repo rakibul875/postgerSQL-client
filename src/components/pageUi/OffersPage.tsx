@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import toast from "react-hot-toast";
 import Link from "next/link";
 import { FiCopy, FiClock, FiTag } from "react-icons/fi";
 import { motion } from "framer-motion";
@@ -57,7 +58,7 @@ const OfferPage: React.FC = () => {
   const handleCopyCode = (code: string): void => {
     if (typeof window !== "undefined" && navigator.clipboard) {
       navigator.clipboard.writeText(code);
-      alert(`Code "${code}" copied to clipboard!`);
+      toast.success(`Code "${code}" copied to clipboard!`);
     }
   };
 

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FiShoppingCart, FiMenu, FiX } from "react-icons/fi";
 import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
 import { Avatar, Button, Dropdown } from "@heroui/react";
 import { ArrowRightFromSquare } from "@gravity-ui/icons";
 interface CartItem {
@@ -62,7 +63,7 @@ const Navbar: React.FC = () => {
   const handleLogout = async () => {
     await authClient.signOut();
 
-    alert("Logging out...");
+    toast.success("Logging out...");
   };
 
   return (

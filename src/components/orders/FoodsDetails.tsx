@@ -5,6 +5,7 @@ import { authClient } from "@/lib/auth-client";
 import { handleCartPost } from "@/lib/post/cart";
 import { AppWindow } from "lucide";
 import React from "react";
+import toast from "react-hot-toast";
 
 import {
   FiShoppingCart,
@@ -36,9 +37,9 @@ const FoodDetailsContent: React.FC<FoodDetailsContentProps> = ({
     };
     const res = await handleCartPost(cartData);
     if (res.success) {
-      alert(`${foodItem.name} added to cart!`);
+      toast.success(`${foodItem.name} added to cart!`);
     } else {
-      alert(res.message);
+      toast.error(res.message);
     }
   };
 

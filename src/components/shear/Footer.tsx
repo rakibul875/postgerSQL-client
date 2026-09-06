@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import Link from "next/link";
 import {
   FiFacebook,
@@ -18,7 +19,7 @@ const Footer: React.FC = () => {
   const handleSubscribe = (e: React.FormEvent): void => {
     e.preventDefault();
     if (email) {
-      alert(`Thank you for subscribing with: ${email}`);
+      toast.success(`Thank you for subscribing with: ${email}`);
       setEmail("");
     }
   };

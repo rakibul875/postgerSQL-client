@@ -12,6 +12,7 @@ import {
   FiCheckCircle,
 } from "react-icons/fi";
 import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
 
 const SingUp: React.FC = () => {
   const [fullName, setFullName] = useState<string>("");
@@ -31,7 +32,7 @@ const SingUp: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     if (passwordsDoNotMatch) {
-      alert("Passwords do not match!");
+      toast.error("Passwords do not match!");
       return;
     }
     const { data, error } = await authClient.signUp.email({
@@ -43,12 +44,12 @@ const SingUp: React.FC = () => {
 
     if (error) {
       console.error("Registration error:", error);
-      alert(error.message || "Registration failed");
+      toast.error(error.message || "Registration failed");
       return;
     }
 
     console.log("User created:", data);
-    alert("Account created successfully!");
+    toast.success("Account created successfully!");
   };
 
   return (
