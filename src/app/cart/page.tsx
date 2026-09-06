@@ -1,7 +1,6 @@
 import CartDetailsView from "@/components/cart/CartDetailsView";
 import { getUserSession } from "@/lib/api/getuser";
 import { getMyCart } from "@/lib/get/my-cart";
-import { getUser } from "@/lib/get/user";
 import { redirect } from "next/navigation";
 
 interface CartResponse {
@@ -28,7 +27,6 @@ const MyCart = async () => {
 
   const userId = user.id;
 
-  // const userId = session?.user?.id;
   const myCartItems = (await getMyCart(userId as string)) as CartResponse;
 
   const data: CartItem[] = myCartItems.data || [];
