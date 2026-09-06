@@ -30,7 +30,6 @@ const MyCart = async () => {
   const myCartItems = (await getMyCart(userId as string)) as CartResponse;
 
   const data: CartItem[] = myCartItems.data || [];
-  console.log("My Cart Items:", data);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100/40 to-gray-50 py-12 px-4 sm:px-6 lg:px-8 mt-16">
