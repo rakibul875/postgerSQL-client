@@ -24,7 +24,7 @@ const SingIn: React.FC = () => {
       toast.success(`Logging in with: ${email}`);
       router.push('/')
     } else {
-      toast.error(error.message);
+      toast.error(error.message as string);
     }
   };
 
