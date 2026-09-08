@@ -43,10 +43,6 @@ const FoodDetailsContent: React.FC<FoodDetailsContentProps> = ({
     }
   };
 
-  const itemPayload = {
-    name: foodItem.name,
-    image: foodItem.image,
-  };
 
   return (
     <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-8 p-6 sm:p-8 relative">
