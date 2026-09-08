@@ -7,15 +7,6 @@ import { FoodItem } from "@/app/orders/page";
 import FoodCard from "./FoodCard";
 
 interface FoodItemsSectionProps {
-  user?: {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    email: string;
-    emailVerified: boolean;
-    name: string;
-    image?: string | null;
-  } | null;
   initialItems: FoodItem[];
   currentSearch: string;
   currentCategory: string;
@@ -27,7 +18,6 @@ const FoodItemsSection: React.FC<FoodItemsSectionProps> = ({
   initialItems,
   currentSearch,
   currentCategory,
-  user
 }) => {
   const router = useRouter();
   const pathname = usePathname();
