@@ -19,9 +19,6 @@ interface FoodCardProps {
 }
 const FoodCard: React.FC<FoodCardProps> = ({ item }) => {
 
-
-
- 
   return (
     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden group">
       <div className="relative w-full h-48 bg-gray-100 overflow-hidden">
