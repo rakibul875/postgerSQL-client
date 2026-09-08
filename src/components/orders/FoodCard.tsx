@@ -17,7 +17,7 @@ interface FoodCardProps {
     image?: string | null;
   } | null;
 }
-const FoodCard: React.FC<FoodCardProps> = ({ item,user }) => {
+const FoodCard: React.FC<FoodCardProps> = ({ item }) => {
 
 
 
