@@ -19,8 +19,6 @@ interface PageProps {
 }
 
 const OrdersPage = async ({ searchParams }: PageProps) => {
-  const user= await getUserSession()
-console.log(user)
   const resolvedParams = await searchParams;
   const search = resolvedParams.search || "";
   const category = resolvedParams.category || "All";
@@ -44,7 +42,7 @@ console.log(user)
 
         <SectionMotion delay={0.2}>
           <FoodItemsSection
-          user={user}
+         
             initialItems={data}
             currentSearch={search}
             currentCategory={category}
