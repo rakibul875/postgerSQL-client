@@ -1,15 +1,37 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { FoodItem } from "@/app/orders/page";
 import { FiShoppingCart } from "react-icons/fi";
 import Link from "next/link";
+import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/navigation";
 
 interface FoodCardProps {
   item: FoodItem;
+  user?: {
+    id: string;
+    createdAt: Date;
+    updatedAt: Date;
+    email: string;
+    emailVerified: boolean;
+    name: string;
+    image?: string | null;
+  } | null;
 }
+const FoodCard: React.FC<FoodCardProps> = ({ item,user }) => {
 
-const FoodCard: React.FC<FoodCardProps> = ({ item }) => {
+
+  // useEffect(() => {
+  //   if (!user) {
+  //     router.push("/login");
+  //   }
+  // }, [user, router]);
+
+  // if (!user) {
+  //   return null;
+  // }
+ 
   return (
     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden group">
       <div className="relative w-full h-48 bg-gray-100 overflow-hidden">

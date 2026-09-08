@@ -7,6 +7,15 @@ import { FoodItem } from "@/app/orders/page";
 import FoodCard from "./FoodCard";
 
 interface FoodItemsSectionProps {
+  user?: {
+    id: string;
+    createdAt: Date;
+    updatedAt: Date;
+    email: string;
+    emailVerified: boolean;
+    name: string;
+    image?: string | null;
+  } | null;
   initialItems: FoodItem[];
   currentSearch: string;
   currentCategory: string;
@@ -18,6 +27,7 @@ const FoodItemsSection: React.FC<FoodItemsSectionProps> = ({
   initialItems,
   currentSearch,
   currentCategory,
+  user
 }) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -71,7 +81,7 @@ const FoodItemsSection: React.FC<FoodItemsSectionProps> = ({
       {initialItems.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {initialItems.map((item) => (
-            <FoodCard key={item.id} item={item} />
+            <FoodCard key={item.id} item={item} user={user} />
           ))}
         </div>
       ) : (

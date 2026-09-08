@@ -2,6 +2,7 @@ import FoodItemsSection from "@/components/orders/FoodItemsSection";
 import { getAllItems } from "@/lib/get/items";
 import React from "react";
 import SectionMotion from "@/components/pageUi/home/SectionMotion";
+import { getUserSession } from "@/lib/api/getuser";
 
 export interface FoodItem {
   id: string;
@@ -18,6 +19,8 @@ interface PageProps {
 }
 
 const OrdersPage = async ({ searchParams }: PageProps) => {
+  const user= await getUserSession()
+console.log(user)
   const resolvedParams = await searchParams;
   const search = resolvedParams.search || "";
   const category = resolvedParams.category || "All";
@@ -41,9 +44,11 @@ const OrdersPage = async ({ searchParams }: PageProps) => {
 
         <SectionMotion delay={0.2}>
           <FoodItemsSection
+          user={user}
             initialItems={data}
             currentSearch={search}
             currentCategory={category}
+            
           />
         </SectionMotion>
       </div>

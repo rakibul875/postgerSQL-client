@@ -3,6 +3,8 @@ import React from "react";
 import Link from "next/link";
 import { FiChevronLeft } from "react-icons/fi";
 import FoodDetailsContent from "@/components/orders/FoodsDetails";
+import { getUserSession } from "@/lib/api/getuser";
+import { redirect } from "next/navigation";
 
 interface FoodsDetailsProps {
   params: Promise<{
@@ -19,8 +21,15 @@ export interface FoodItem {
   image: string;
   createdAt: string;
 }
+ 
 
 const FoodsDetails = async ({ params }: FoodsDetailsProps) => {
+
+ 
+  const user=await getUserSession()
+     if (!user) {
+      redirect("/auth/signin");
+    }
   const { id } = await params;
   const foodItem = await getItemById(id);
   const data: FoodItem = foodItem.data;
